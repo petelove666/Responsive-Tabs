@@ -1,0 +1,14 @@
+
+
+.tab-list { margin: 0; padding: 0;}
+.tab-list li { display: inline; margin-right: 2em;}
+
+
+@media (max-width: 768px) {
+	.tabs.enabled .tab-list { display: none;}
+}
+
+@media (min-width: 768px) {
+	.tabs.enabled .tabHeader { display: none;}
+	.tabs.enabled .tabHeader.active-header { display: block;}
+}
