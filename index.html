@@ -1,0 +1,89 @@
+<!doctype html>
+	<head>
+		<title>Responsive Tabs Demo</title>
+		<link rel="stylesheet" href="css/tabs.css">
+		<style type="text/css">
+			body {
+				background: #fff;
+				color: #333;
+				padding:15px 30px;
+				font-family: Helvetica, Arial, sans-serif;
+				line-height: 1.5em;
+				
+			}
+			a { color: #0496b6}
+			
+			h1, h2 { margin: 1em 0 1.5em 0; color: #0f556f}
+			.tabs h1, .tabs h2 { color: #333; margin-bottom: 1em;}
+
+			hgroup h1 { margin-bottom:0; margin-top:0;}
+			
+			hgroup h2 { font-size: 1.1em; font-weight: normal;}
+
+			.desc { background: #c9f6f9; border: 1px solid #ccc; box-shadow: 2px 2px 2px #eee; padding: 5px 15px 10px 15px; }
+			.desc p { max-width: 950px;}
+			.desc h2 { margin-bottom: 0.25em; font-size: 1em; color: #333;}
+			.desc ul { margin-top:0; margin-left:-1.2em; float: left; width: 530px;}
+
+			.btn { display: block; float: left; margin-left: 40px; padding: 10px 5px; background: #0496b6; font-size: 1.5em; color: #fff; font-weight: bold; text-decoration: none; border-radius: 5px; width: 300px; text-align: center; box-shadow: 2px 2px 2px #eee;}
+			.btn:hover { background: #3cb7d3}
+			.clearfix {
+			  *zoom: 1;
+			}
+
+			.clearfix:before,
+			.clearfix:after {
+			  display: table;
+			  content: "";
+			}
+
+			.clearfix:after {
+			  clear: both;
+			}
+
+		</style>
+	</head>
+	<body>
+		<hgroup>
+			<h1>Responsive Tabs Demo</h1>
+			<h2><span><a href="http://www.petelove.com">www.petelove.com</a> - <a href="https://twitter.com/pete_love">Follow me on Twitter</a></span></h2>
+		</hgroup>
+		<div class="desc clearfix">
+			<p>Controls behave like regular tabs above a specified screen width (defined by a media query in the associated css file - in this example 768px), and behave like an accordion on screens below that width.</p>
+			<h2>Key features</h2>
+			<ul>
+				<li>Progressive enhancement - uses semantic heading/content markup - tabs and accordion are created entirely with jQuery</li>
+				<li>Uses Aria attributes and roles to aid screen reader accessibility</li>
+				<li>Tabs and their content are fully accessible via keyboard</li>
+				<li>Supports multiple sets of tabs on same page</li>
+			</ul>
+			<a class="btn" href="#">Download from Github</a>
+		</div>
+
+		<h2>Movie Monsters</h2>
+		<div class="tabs-panel">
+			<div class="tabs">
+				<h2 class="tab-heading active-tab-heading">Frankenstein</h2>
+				<div class="tab-panel active-panel">
+					<p>Frankenstein; or, The Modern Prometheus is a novel written by <a href="#">Mary Shelley</a> about a creature produced by an unorthodox scientific experiment. Shelley started writing the story when she was nineteen, and the novel was published when she was twenty-one. The first edition was published anonymously in London in 1818. Shelley's name appears on the second edition, published in France in 1823. Shelley started writing the story when she was nineteen, and the novel was published when she was twenty-one. The first edition was published anonymously in London in 1818. Shelley's name appears on the second edition, published in France in 1823</p>
+				</div>
+				<h2 class="tab-heading">Dracula</h2>
+				<div class="tab-panel">
+					<p>Dracula is an 1897 Gothic horror novel by Irish author Bram Stoker.[1] Famous for introducing the character of the vampire Count Dracula, the novel tells the story of Dracula's attempt to relocate from Transylvania to England, and the battle between Dracula and a small group of men and women led by Professor Abraham Van Helsing.</p>
+				</div>
+				<h2 class="tab-heading">The Wolf Man</h2>
+				<div class="tab-panel">
+					<p>The Wolf Man is a 1941 American Werewolf Horror film written by <a href="#">Curt Siodmak</a> and produced and directed by <a href="#">George Waggner</a>. The film stars Lon Chaney, Jr. as The Wolf Man, featuring Claude Rains, Evelyn Ankers, Ralph Bellamy, Patric Knowles, Bela Lugosi, and Maria Ouspenskaya.</p>
+				</div>
+			</div>
+		</div>
+		
+		<script src="js/jquery.min.js"></script>
+		<script src="js/responsiveTabs-v1.0.js"></script>
+		<script>
+		$(document).ready(function() {
+			responsiveTabs();
+		})
+		</script>
+	</body>
+</html>

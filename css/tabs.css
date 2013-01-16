@@ -1,5 +1,6 @@
 
-/* Required for core functionality of tab.js */
+/* REQUIRED for core functionality of tab.js */
+
 @media (max-width: 767px) {
 	.tab-list { display: none;}
 	.tabs.enabled .tab-heading { cursor:pointer; }
@@ -12,24 +13,52 @@
 	.tab-list li { display: inline; cursor:pointer;}
 	.hidden-mobile { display: block !important;}
 }
+
 /* END - Required for core functionality of tab.js */
 
-/* Optional - Basic Skin */
+
+
+/* OPTIONAL - Basic Skin */
 
 .tab-panel { margin-bottom:50px;}
+.tabs.enabled .tab-heading:focus,
+.tabs.enabled .tab-list li:focus { outline: 1px solid #ccc;  }
+.tabs.enabled .tab-heading.active-tab-heading:focus,
+.tabs.enabled .tab-list li.active-tab:focus { outline: none !important;}
 
 @media (max-width: 767px) {
-	.tabs.enabled .tab-heading { background: #ddd; padding: 0.5em; border-radius: 5px; border: 1px solid #ccc;}
-	.tabs.enabled .tab-heading:hover { background: #efefef}
-	.tabs.enabled .tab-heading.active-tab-heading { background: #fff }
-	.tabs.enabled .tab-heading.active-tab-heading { background: #fff}
+	.tabs.enabled .tab-heading { 
+		padding: 0.5em; border-radius: 5px; border: 1px solid #ccc; box-shadow: 0px 2px 3px rgba(0,0,0,0.4);
+		background: #ddd;
+		position: relative;
+	}
+
+	.tabs.enabled .tab-heading:after {
+		content:"";
+		display: block;
+		position: absolute;
+		right: 20px;
+		top: 40%;
+		width: 0px; 
+		height: 0px; 
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: 10px solid #000;
+	}
+	.tabs.enabled .tab-heading:hover,
+	.tabs.enabled .tab-heading.active-tab-heading:hover { background-color: #efefef}
+	.tabs.enabled .tab-heading.active-tab-heading { background: #fff;}
+	.tabs.enabled .tab-heading.active-tab-heading:after {
+		border-bottom: 10px solid #000;
+		border-top:0;
+	 }
 }
 
 @media (min-width: 768px) {
-	.tab-list { font-size: 1.2em; margin: 0; padding: 0; }
-	.tab-list li { background: #ddd; padding: 0.25em 0.5em; margin-right: 1em; border-radius: 5px; border: 1px solid #ccc;}
+	.tab-list { font-size: 1.2em; margin: 0; padding: 0;border-bottom: 1px solid #ddd; padding-bottom:11px; line-height: 1em;}
+	.tab-list li { background: #eee; padding: 10px 20px;  margin-right: 1em; border-top-left-radius: 5px; border-top-right-radius: 5px;border: 1px solid #ddd; }
 	.tab-list li:hover {background: #efefef }
-	.tab-list li.active-tab {  background: #fff;}
-
+	.tab-list li.active-tab {  background: #fff; border-bottom-color: #fff;}
 }
+
 /* END - Optional - Basic Skin */

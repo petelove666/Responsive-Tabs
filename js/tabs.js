@@ -1,3 +1,4 @@
+/* responsiveTabs.js */
 
 $(document).ready(function() {
 	responsiveTabs();
@@ -7,7 +8,9 @@ function responsiveTabs() {
 
 	$('.tabs').addClass('enabled'); // used to style tabs if this js is loaded
 	$('.tab-panel').not('.active-panel').hide().attr('aria-hidden','true'); //hide all except active panel
-	$('.tab-panel.active-panel')./*hide().show().*/attr('aria-hidden','false');
+	$('.tab-panel.active-panel').attr('aria-hidden', 'false');
+	/* make active tab hidden for mobile */
+	$('.tab-panel.active-panel').addClass('hidden-mobile');
 	
 	var tablistcount = 1;
 
@@ -51,6 +54,8 @@ function responsiveTabs() {
 			// if this is the active heading then make it the active tab panel
 			if($this.hasClass('active-tab-heading')) {
 				$tabListItem.addClass('active-tab');
+				/* make active heading inactive for mobile */
+                $this.removeClass('active-tab-heading');
 			}
 
 			//assign tab with role and text
@@ -153,7 +158,7 @@ function responsiveTabs() {
 				else {
 
 					// hide panel but give it special hidden-mobile class so that it can be visible at desktop size
-					$this.next().removeClass('active-panel').slideToggle().addClass('hidden-mobile');
+					$this.next().removeClass('active-panel').slideToggle(function () { $(this).addClass('hidden-mobile') });
 
 					//remove active heading class
 					$this.removeClass('active-tab-heading');
