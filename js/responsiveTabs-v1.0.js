@@ -21,6 +21,10 @@ function responsiveTabs() {
 
 			var $tabs = $(this);
 
+			// wrap tabs in container to - to be dynamically resized to help prevent page jump
+	    	var $tabsPanel = $('<div />').addClass('tabs-panel').insertBefore($tabs);
+	    	$tabs.prependTo($tabsPanel);
+
 			var highestHeight = 0;
 
 			// determine height of tallest tab panel. Used later to prevent page jump when tabs are clicked
@@ -79,7 +83,7 @@ function responsiveTabs() {
 				$tabListItem.click(function() {
 
 					//set height of tab container to highest panel height to avoid page jump
-					$tabs.parent().css('height', highestHeight);
+					$tabsPanel.css('height', highestHeight);
 
 					// remove hidden mobile class from any other tab as we'll want that tab content to be open at mobile size
 					$this.closest('.tabs').find('.hidden-mobile').removeClass('hidden-mobile');
@@ -100,7 +104,7 @@ function responsiveTabs() {
 					$tabListItem.addClass('active-tab');
 
 					//reset height of tab panels to auto
-					$tabs.parent().css('height', 'auto');
+					$tabsPanel.css('height', 'auto');
 
 
 				})
