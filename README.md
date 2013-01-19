@@ -1,5 +1,6 @@
 Responsive-Tabs
-===============
+===============  
+Author: Pete Love
 
 For creating responsive tabs. The controls behave like regular tabs above a specified screen width (defined by an editable media query in the associated css file), and behave like an accordion on screens below that width.
 
