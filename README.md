@@ -18,7 +18,7 @@ Notes
 
 How to use
 ==========
-- Include jQuery (has been tested with versions 1.6.2 and above)
+- Include jQuery (requires minimum jquery-1.5.1.min.js)
 - Include responsiveTabs.js
 - Include the css from tabs.css, and adjust the media query breakpoint as desired
 - Markup your tabs regions as follows:
