@@ -4,6 +4,11 @@ Author: Pete Love
 
 For creating responsive tabs. The controls behave like regular tabs above a specified screen width (defined by an editable media query in the associated css file), and behave like an accordion on screens below that width.
 
+Version History
+===============
+1.0 Initial release
+1.1 Namespacing of function
+
 Key features
 ============
 - Progressive enhancement – uses semantic heading/content markup – tabs and accordion are created entirely with jQuery
@@ -33,4 +38,4 @@ How to use
 
 (The headings can be any level, as long as they have the class ‘tab-heading’. Just wrap the content of each tab in a &lt;div> with class ‘tab-panel’. Note that the tab you want open on page load requires the additional class ‘active-tab-heading’ on the heading, and ‘active-panel’ on the content &lt;div> ).
 
-- On document ready, call the function responsiveTabs() …your tabs will appear!
+- On document ready, call the function RESPONSIVEUI.responsiveTabs() …your tabs will appear!
