@@ -6,7 +6,7 @@ For creating responsive tabs. The controls behave like regular tabs above a spec
 
 Version History
 ===============
-1.0 Initial release
+1.0 Initial release  
 1.1 Namespacing of function
 
 Key features
