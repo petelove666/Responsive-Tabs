@@ -7,7 +7,8 @@ For creating responsive tabs. The controls behave like regular tabs above a spec
 Version History
 ===============
 1.0 Initial release  
-1.1 Namespacing of function
+1.1 Namespacing of function  
+1.2 Improvements to efficiency and readability of code, especially around element creation and attribute setting
 
 Key features
 ============
