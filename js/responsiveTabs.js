@@ -2,7 +2,7 @@
 
 ResponsiveTabs.js
 Author: Pete Love
-Version: 1.1
+Version: 1.2
 ------------------- */
 
 var RESPONSIVEUI = {};
@@ -23,8 +23,8 @@ RESPONSIVEUI.responsiveTabs = function () {
 			var $tabs = $(this);
 
 			// wrap tabs in container to - to be dynamically resized to help prevent page jump
-	    	var $tabsPanel = $('<div />').addClass('tabs-panel').insertBefore($tabs);
-	    	$tabs.prependTo($tabsPanel);
+	    	var $tabsPanel = $('<div/>', { class: 'tabs-panel' });
+	    	$tabs.wrap($tabsPanel);
 
 			var highestHeight = 0;
 
@@ -37,9 +37,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 			})
 
 			//create the tab list
-			var $tabList = $('<ul/>');
-			$tabList.addClass('tab-list');
-			$tabList.attr('role','tablist');
+			var $tabList = $('<ul/>', { class: 'tab-list', 'role': 'tablist' });
 
 			var tabcount = 1;
 
@@ -49,68 +47,70 @@ RESPONSIVEUI.responsiveTabs = function () {
 				var $this = $(this);
 				$this.attr('tabindex', 0);
 
-				//create tab list items from headings
-				var $tabListItem = $('<li/>');
-				$tabListItem.addClass('tab');
-
+				// CREATE TAB ITEMS (VISIBLE ON DESKTOP)
+				//create tab list item from heading
 				//associate tab list item with tab panel
-				$tabListItem.attr('id', 'tablist' + tablistcount + '-tab' + tabcount);
-				$tabListItem.attr('aria-controls', 'tablist' + tablistcount +'-panel' + tabcount);
-				$tabListItem.attr('tabindex', 0);
-				
-				// if this is the active heading then make it the active tab panel
+				var $tabListItem = $('<li/>', { 
+					class: 'tab',
+					id: 'tablist' + tablistcount + '-tab' + tabcount,
+					'aria-controls': 'tablist' + tablistcount +'-panel' + tabcount,
+					'role': 'tab',
+					tabindex: 0,
+					text: $this.text(),
+					keydown: function (objEvent) {
+		            	if (objEvent.keyCode == 13) { // if user presses 'enter'
+		                 $tabListItem.click();
+		            	}
+		        	},
+					click: function() {
+						//Toggle associated panel
+
+						//set height of tab container to highest panel height to avoid page jump
+						$tabsPanel.css('height', highestHeight);
+
+						// remove hidden mobile class from any other tab as we'll want that tab content to be open at mobile size
+						$this.closest('.tabs').find('.hidden-mobile').removeClass('hidden-mobile');
+						
+						// close current panel and remove active state from any hidden headings
+						$this.closest('.tabs').find('.active-panel').toggle().removeClass('active-panel').attr('aria-hidden','true').prev().removeClass('active-tab-heading');
+						
+						//make this tab content active
+						$this.next().toggle().addClass('active-panel').attr('aria-hidden','false');
+
+						//make the hidden heading active
+						$this.addClass('active-tab-heading');
+
+						//remove active state from currently active tab
+						$tabListItem.closest('.tab-list').find('.active-tab').removeClass('active-tab');
+
+						//make this tab active
+						$tabListItem.addClass('active-tab');
+
+						//reset height of tab panels to auto
+						$tabsPanel.css('height', 'auto');
+					}
+				});
+
+				// add tab item
+				$tabList.append($tabListItem);
+
+
+
+				// TAB HEADINGS (VISIBLE ON MOBILE)
+				// if this is the active heading then make it the active tab item
 				if($this.hasClass('active-tab-heading')) {
 					$tabListItem.addClass('active-tab');
-					/* make active heading inactive for mobile */
+					/* make active heading inactive (ie. closed) for benefit of mobile */
 	                $this.removeClass('active-tab-heading');
 				}
 
-				//assign tab with role and text
-				$tabListItem.attr('role','tab');
-				$tabListItem.text($this.text());
+				//associate tab panel with tab list item
+				$this.next().attr({
+	 				'role': 'tabpanel',
+	 				'aria-labelledby': $tabListItem.attr('id'),
+	 				id: 'tablist' + tablistcount + '-panel' + tabcount
+	 			});
 
-				//associate tab panel with tabl list item
-				$this.next().attr('role','tabpanel').attr('aria-labelledby', $tabListItem.attr('id')).attr('id', 'tablist' + tablistcount + '-panel' + tabcount);
-	 
-	 			// if user presses 'enter' on tab list item trigger the click event
-				$tabListItem.keydown(function(objEvent) {
-		            if (objEvent.keyCode == 13) {
-		                 $tabListItem.click();
-		            }
-		        })
-
-
-				//toggle tab panel if click event fired on tab list item
-				$tabListItem.click(function() {
-
-					//set height of tab container to highest panel height to avoid page jump
-					$tabsPanel.css('height', highestHeight);
-
-					// remove hidden mobile class from any other tab as we'll want that tab content to be open at mobile size
-					$this.closest('.tabs').find('.hidden-mobile').removeClass('hidden-mobile');
-					
-					// close current panel and remove active state from any hidden headings
-					$this.closest('.tabs').find('.active-panel').toggle().removeClass('active-panel').attr('aria-hidden','true').prev().removeClass('active-tab-heading');
-					
-					//make this tab content active
-					$this.next().toggle().addClass('active-panel').attr('aria-hidden','false');
-
-					//make the hidden heading active
-					$this.addClass('active-tab-heading');
-
-					//remove active state from currently active tab
-					$tabListItem.closest('.tab-list').find('.active-tab').removeClass('active-tab');
-
-					//make this tab active
-					$tabListItem.addClass('active-tab');
-
-					//reset height of tab panels to auto
-					$tabsPanel.css('height', 'auto');
-
-
-				})
-
-				$tabList.append($tabListItem);
 
 				// if user presses 'enter' on tab heading trigger the click event
 				$this.keydown(function(objEvent) {
@@ -176,11 +176,13 @@ RESPONSIVEUI.responsiveTabs = function () {
 				})
 
 				tabcount ++;
+
 			})
 
-			// add tabs to tab list
+			// add finished tab list to its container
 			$tabs.prepend($tabList);
 
+			// next set of tabs on page
 			tablistcount ++;
 		})
 	}
