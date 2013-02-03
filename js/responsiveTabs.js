@@ -59,7 +59,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 					text: $this.text(),
 					keydown: function (objEvent) {
 		            	if (objEvent.keyCode == 13) { // if user presses 'enter'
-		                 $tabListItem.click();
+		                	$tabListItem.click();
 		            	}
 		        	},
 					click: function() {
