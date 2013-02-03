@@ -29,13 +29,14 @@ How to use
 - Include responsiveTabs.js
 - Include the css from tabs.css, and adjust the media query breakpoint as desired
 - Markup your tabs regions as follows:
- 
-&lt;div class="tabs"&gt;  
-  &lt;h2 class="tab-heading active-tab-heading">[...]&lt;/h2>  
-  &lt;div class="tab-panel active-panel">[...]&lt;/div>  
-  &lt;h2 class="tab-heading">[...]&lt;/h2>  
-  &lt;div class="tab-panel">[...]&lt;/div>  
-&lt;/div>
+
+  &lt;div class="tabs"&gt;  
+	  &lt;h2 class="tab-heading active-tab-heading">[...]&lt;/h2>  
+	  &lt;div class="tab-panel active-panel">[...]&lt;/div>  
+	  &lt;h2 class="tab-heading">[...]&lt;/h2>  
+	  &lt;div class="tab-panel">[...]&lt;/div>  
+	&lt;/div>
+
 
 (The headings can be any level, as long as they have the class ‘tab-heading’. Just wrap the content of each tab in a &lt;div> with class ‘tab-panel’. Note that the tab you want open on page load requires the additional class ‘active-tab-heading’ on the heading, and ‘active-panel’ on the content &lt;div> ).
 
