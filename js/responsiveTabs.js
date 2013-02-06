@@ -2,7 +2,7 @@
 
 ResponsiveTabs.js
 Author: Pete Love
-Version: 1.2
+Version: 1.3
 ------------------- */
 
 var RESPONSIVEUI = {};
@@ -11,9 +11,9 @@ RESPONSIVEUI.responsiveTabs = function () {
 	if (!$('.tabs').hasClass('enabled')) {	// if we haven't already enabled tabs
 		$('.tabs').addClass('enabled'); // used to style tabs if JS is loaded
 		$('.tab-panel').not('.active-panel').hide().attr('aria-hidden','true'); //hide all except active panel
-		$('.tab-panel.active-panel').attr('aria-hidden', 'false');
-		/* make active tab hidden for mobile */
-		$('.tab-panel.active-panel').addClass('hidden-mobile');
+		$('.active-panel').attr('aria-hidden', 'false');
+		/* make active tab panel hidden for mobile */
+		$('.active-panel').addClass('hidden-mobile');
 		
 		var tablistcount = 1;
 
@@ -22,7 +22,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 
 			var $tabs = $(this);
 
-			// wrap tabs in container to - to be dynamically resized to help prevent page jump
+			// wrap tabs in container - to be dynamically resized to help prevent page jump
 	    	var $tabsPanel = $('<div/>', { class: 'tabs-panel' });
 	    	$tabs.wrap($tabsPanel);
 
@@ -44,8 +44,10 @@ RESPONSIVEUI.responsiveTabs = function () {
 			//loop through each heading in set
 			$tabs.find('.tab-heading').each(function() {
 
-				var $this = $(this);
-				$this.attr('tabindex', 0);
+				var $tabHeading = $(this);
+				var $tabPanel = $(this).next();
+
+				$tabHeading.attr('tabindex', 0);
 
 				// CREATE TAB ITEMS (VISIBLE ON DESKTOP)
 				//create tab list item from heading
@@ -56,32 +58,32 @@ RESPONSIVEUI.responsiveTabs = function () {
 					'aria-controls': 'tablist' + tablistcount +'-panel' + tabcount,
 					'role': 'tab',
 					tabindex: 0,
-					text: $this.text(),
+					text: $tabHeading.text(),
 					keydown: function (objEvent) {
 		            	if (objEvent.keyCode == 13) { // if user presses 'enter'
 		                	$tabListItem.click();
 		            	}
 		        	},
 					click: function() {
-						//Toggle associated panel
+						//Show associated panel
 
 						//set height of tab container to highest panel height to avoid page jump
 						$tabsPanel.css('height', highestHeight);
 
-						// remove hidden mobile class from any other tab as we'll want that tab content to be open at mobile size
-						$this.closest('.tabs').find('.hidden-mobile').removeClass('hidden-mobile');
+						// remove hidden mobile class from any other panel as we'll want that panel to be open at mobile size
+						$tabs.find('.hidden-mobile').removeClass('hidden-mobile');
 						
-						// close current panel and remove active state from any hidden headings
-						$this.closest('.tabs').find('.active-panel').toggle().removeClass('active-panel').attr('aria-hidden','true').prev().removeClass('active-tab-heading');
+						// close current panel and remove active state from its (hidden on desktop) heading
+						$tabs.find('.active-panel').toggle().removeClass('active-panel').attr('aria-hidden','true').prev().removeClass('active-tab-heading');
 						
-						//make this tab content active
-						$this.next().toggle().addClass('active-panel').attr('aria-hidden','false');
+						//make this tab panel active
+						$tabPanel.toggle().addClass('active-panel').attr('aria-hidden','false');
 
 						//make the hidden heading active
-						$this.addClass('active-tab-heading');
+						$tabHeading.addClass('active-tab-heading');
 
-						//remove active state from currently active tab
-						$tabListItem.closest('.tab-list').find('.active-tab').removeClass('active-tab');
+						//remove active state from currently active tab list item
+						$tabList.find('.active-tab').removeClass('active-tab');
 
 						//make this tab active
 						$tabListItem.addClass('active-tab');
@@ -98,14 +100,14 @@ RESPONSIVEUI.responsiveTabs = function () {
 
 				// TAB HEADINGS (VISIBLE ON MOBILE)
 				// if this is the active heading then make it the active tab item
-				if($this.hasClass('active-tab-heading')) {
+				if($tabHeading.hasClass('active-tab-heading')) {
 					$tabListItem.addClass('active-tab');
 					/* make active heading inactive (ie. closed) for benefit of mobile */
-	                $this.removeClass('active-tab-heading');
+	                $tabHeading.removeClass('active-tab-heading');
 				}
 
 				//associate tab panel with tab list item
-				$this.next().attr({
+				$tabPanel.attr({
 	 				'role': 'tabpanel',
 	 				'aria-labelledby': $tabListItem.attr('id'),
 	 				id: 'tablist' + tablistcount + '-panel' + tabcount
@@ -113,42 +115,42 @@ RESPONSIVEUI.responsiveTabs = function () {
 
 
 				// if user presses 'enter' on tab heading trigger the click event
-				$this.keydown(function(objEvent) {
+				$tabHeading.keydown(function(objEvent) {
 		            if (objEvent.keyCode == 13) {
-		                 $this.click();
+		                 $tabHeading.click();
 		            }
 		        })
 
-				//toggle tab panel if click heading (ie. mobile)
-				$this.click(function() {
+				//toggle tab panel if click heading (on mobile)
+				$tabHeading.click(function() {
 
 					// remove any hidden mobile class
-					$this.closest('.tabs').find('.hidden-mobile').removeClass('hidden-mobile');
+					$tabs.find('.hidden-mobile').removeClass('hidden-mobile');
 
 					// if this isn't currently active
-					if (!$this.hasClass('active-tab-heading')){
+					if (!$tabHeading.hasClass('active-tab-heading')){
 						//get position of active heading 
 						if($('.active-tab-heading').length) {
 							var oldActivePos = $('.active-tab-heading').offset().top;
 						}
 						
 						// close currently active panel and remove active state from any hidden heading
-						$this.closest('.tabs').find('.active-panel').slideToggle().removeClass('active-panel').prev().removeClass('active-tab-heading');
+						$tabs.find('.active-panel').slideToggle().removeClass('active-panel').prev().removeClass('active-tab-heading');
 						
 						//close all tabs
-						$this.closest('.tabs').find('.tab-panel').hide().attr('aria-hidden','true');
+						$tabs.find('.tab-panel').hide().attr('aria-hidden','true');
 
 						//open this panel
-						$this.next().slideToggle().addClass('active-panel').attr('aria-hidden','false');
+						$tabPanel.slideToggle().addClass('active-panel').attr('aria-hidden','false');
 
 						// make this heading active
-						$this.addClass('active-tab-heading');
+						$tabHeading.addClass('active-tab-heading');
 
-						var $currentActive = $this.closest('.tabs').find('.active-tab');
+						var $currentActive = $tabs.find('.active-tab');
 
-						//set the active tab (for desktop)
+						//set the active tab list item (for desktop)
 						$currentActive.removeClass('active-tab');
-						var panelId = $this.next().attr('id');
+						var panelId = $tabPanel.attr('id');
 						var tabId = panelId.replace('panel','tab');
 						$('#' + tabId).addClass('active-tab');
 
@@ -165,10 +167,10 @@ RESPONSIVEUI.responsiveTabs = function () {
 					else {
 
 						// hide panel but give it special hidden-mobile class so that it can be visible at desktop size
-						$this.next().removeClass('active-panel').slideToggle(function () { $(this).addClass('hidden-mobile') });
+						$tabPanel.removeClass('active-panel').slideToggle(function () { $(this).addClass('hidden-mobile') });
 
 						//remove active heading class
-						$this.removeClass('active-tab-heading');
+						$tabHeading.removeClass('active-tab-heading');
 
 						//don't alter classes on tabs as we want it active if put back to desktop size
 					}
