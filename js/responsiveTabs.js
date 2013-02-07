@@ -2,7 +2,7 @@
 
 ResponsiveTabs.js
 Author: Pete Love
-Version: 1.3
+Version: 1.4
 ------------------- */
 
 var RESPONSIVEUI = {};
