@@ -57,14 +57,14 @@
 			<h2><span><a href="http://www.petelove.com">www.petelove.com</a> | <a href="https://twitter.com/pete_love">Follow me on Twitter</a></span></h2>
 		</hgroup>
 		<div class="intro">
-			<p class="demo-intro">In this example, the <strong>media query is set 768px</strong>.</p>
+			<p class="demo-intro">In this example, the <strong>media query breakpoint is set 768px</strong>.</p>
 			<p>Resize window below 768px and controls will be an accordion.<br/>Resize to 768px or above and they will appear as regular tabs.</p>
 		</div>
 
 		<div class="tabs">
 
-			<h2 class="tab-heading active-tab-heading">Key features</h2>
-			<div class="tab-panel active-panel">
+			<h2 class="tab-heading">Key features</h2>
+			<div class="tab-panel">
 				<ul>
 					<li>Progressive enhancement - uses semantic heading/content markup - tabs and accordion are created entirely with jQuery</li>
 					<li>Uses Aria attributes and roles to aid screen reader accessibility</li>
@@ -82,13 +82,23 @@
 					<li>Markup your tabs regions as follows:
 					<code><pre>
 &lt;div class="tabs">
-  &lt;h2 class="tab-heading active-tab-heading">[...]&lt;/h2>
-  &lt;div class="tab-panel active-panel">[...]&lt;/div>
+  &lt;h2 class="tab-heading">[...]&lt;/h2>
+  &lt;div class="tab-panel">[...]&lt;/div>
   &lt;h2 class="tab-heading">[...]&lt;/h2>
   &lt;div class="tab-panel">[...]&lt;/div>
 &lt;/div>
 					</pre></code>
-					(The headings can be any level, as long as they have the class 'tab-heading'. Just wrap the content of each tab in a &lt;div> with class 'tab-panel'. Note that the tab you want open on page load requires the additional class 'active-tab-heading' on the heading, and 'active-panel' on the content &lt;div> ).
+					<span>The headings can be any level, as long as they have the class 'tab-heading'. Note that the first (leftmost) tab panel will be open by default in 'tab view', while all panels will be closed in 'accordion view' (ie. below the specified breakpoint).</span>
+					<p>If you want a specific tab other than the first to be open by default then add the  additional class 'active-panel' onto the panel, eg:</p>
+					<code><pre>
+&lt;div class="tabs">
+  &lt;h2 class="tab-heading">[...]&lt;/h2>
+  &lt;div class="tab-panel">[...]&lt;/div>
+  &lt;h2 class="tab-heading">[...]&lt;/h2>
+  &lt;div class="tab-panel active-panel">[...]&lt;/div>
+&lt;/div>
+					</pre></code>
+
 					</li>
 					<li>On document ready, call the function responsiveTabs() &hellip;your tabs will appear!</li>
 				</ol>
@@ -97,10 +107,9 @@
 			<h2 class="tab-heading">Download</h2>
 			<div class="tab-panel">
 				<p>responsiveTabs.js is available for download on Github</p>
-				<a class="btn" href="https://github.com/petelove666/Responsive-Tabs">Download v1.2 from Github</a>
+				<a class="btn" href="https://github.com/petelove666/Responsive-Tabs">Download v1.4 from Github</a>
 			</div>
 		</div>
-		
 		
 		<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
 		<script src="js/responsiveTabs.js"></script>

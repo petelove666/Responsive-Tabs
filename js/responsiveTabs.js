@@ -9,18 +9,26 @@ var RESPONSIVEUI = {};
 
 RESPONSIVEUI.responsiveTabs = function () {
 	if (!$('.tabs').hasClass('enabled')) {	// if we haven't already enabled tabs
-		$('.tabs').addClass('enabled'); // used to style tabs if JS is loaded
-		$('.tab-panel').not('.active-panel').hide().attr('aria-hidden','true'); //hide all except active panel
-		$('.active-panel').attr('aria-hidden', 'false');
-		/* make active tab panel hidden for mobile */
-		$('.active-panel').addClass('hidden-mobile');
-		
-		var tablistcount = 1;
+		$('.tabs').addClass('enabled'); // used to style tabs if JS is present
 
 		//loop through all sets of tabs on the page
+		var tablistcount = 1;
+
 		$('.tabs').each(function() {
 
 			var $tabs = $(this);
+
+			// determine if markup already identifies the active tab panel for this set of tabs
+			// if not then set first heading and tab to be the active one
+			var $activePanel = $tabs.find('.active-panel');
+			if(!$activePanel.length) {
+				var $activePanel = $tabs.find('.tab-panel').first().addClass('active-panel');
+			}
+
+			$tabs.find('.tab-panel').not('.active-panel').hide().attr('aria-hidden','true'); //hide all except active panel
+			$activePanel.attr('aria-hidden', 'false');
+			/* make active tab panel hidden for mobile */
+			$activePanel.addClass('hidden-mobile');
 
 			// wrap tabs in container - to be dynamically resized to help prevent page jump
 	    	var $tabsPanel = $('<div/>', { class: 'tabs-panel' });
@@ -39,9 +47,8 @@ RESPONSIVEUI.responsiveTabs = function () {
 			//create the tab list
 			var $tabList = $('<ul/>', { class: 'tab-list', 'role': 'tablist' });
 
-			var tabcount = 1;
-
 			//loop through each heading in set
+			var tabcount = 1;
 			$tabs.find('.tab-heading').each(function() {
 
 				var $tabHeading = $(this);
@@ -92,20 +99,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 						$tabsPanel.css('height', 'auto');
 					}
 				});
-
-				// add tab item
-				$tabList.append($tabListItem);
-
-
-
-				// TAB HEADINGS (VISIBLE ON MOBILE)
-				// if this is the active heading then make it the active tab item
-				if($tabHeading.hasClass('active-tab-heading')) {
-					$tabListItem.addClass('active-tab');
-					/* make active heading inactive (ie. closed) for benefit of mobile */
-	                $tabHeading.removeClass('active-tab-heading');
-				}
-
+				
 				//associate tab panel with tab list item
 				$tabPanel.attr({
 	 				'role': 'tabpanel',
@@ -113,7 +107,18 @@ RESPONSIVEUI.responsiveTabs = function () {
 	 				id: 'tablist' + tablistcount + '-panel' + tabcount
 	 			});
 
+	 			// if this is the active panel then make it the active tab item
+				if($tabPanel.hasClass('active-panel')) {
+					$tabListItem.addClass('active-tab');
+				}
 
+				// add tab item
+				$tabList.append($tabListItem);
+
+				
+
+
+				// TAB HEADINGS (VISIBLE ON MOBILE)
 				// if user presses 'enter' on tab heading trigger the click event
 				$tabHeading.keydown(function(objEvent) {
 		            if (objEvent.keyCode == 13) {
