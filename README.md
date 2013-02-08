@@ -14,7 +14,8 @@ Version History
 1.1 Namespacing of function  
 1.2 Improvements to efficiency and readability of code, especially around element creation and attribute setting  
 1.3 More efficient selectors, some clearer variable naming  
-1.4 Removed necessity for an initially active tab to be set within the markup
+1.4 Removed necessity for an initially active tab to be set within the markup  
+1.5 Removed need for heading and panel classes to be added manually to markup
 
 Key features
 ============
@@ -37,20 +38,20 @@ How to use
 - Markup your tabs regions as follows:
 
 		<div class="tabs">
-			<h2 class="tab-heading">[...]</h2>
-			<div class="tab-panel">[...]</div>
-			<h2 class="tab-heading">[...]</h2>
-			<div class="tab-panel">[...]</div>
+			<h2>[...]</h2>
+			<div>[...]</div>
+			<h2>[...]</h2>
+			<div>[...]</div>
 		</div>
 
-The headings can be any level, as long as they have the class 'tab-heading'. Note that the first (leftmost) tab panel will be open by default in 'tab view', while all panels will be closed in 'accordion view' (ie. below the specified breakpoint).  
-If you want a specific tab other than the first to be open by default then add the  additional class 'active-panel' onto the panel, eg:  
+The headings can be any level, from h1 to h6. Note that the first (leftmost) tab panel will be open by default in 'tab view', while all panels will be closed in 'accordion view' (ie. below the specified breakpoint).
+If you want a specific tab other than the first to be open by default then add the additional class 'active-panel' onto the panel, eg:
 
 		<div class="tabs">
-			<h2 class="tab-heading">[...]</h2>
-			<div class="tab-panel">[...]</div>
-			<h2 class="tab-heading">[...]</h2>
-			<div class="tab-panel active-panel">[...]</div>
+			<h2>[...]</h2>
+			<div>[...]</div>
+			<h2>[...]</h2>
+			<div class="active-panel">[...]</div>
 		</div>
 
 - On document ready, call the function RESPONSIVEUI.responsiveTabs() …your tabs will appear!
