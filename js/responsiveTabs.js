@@ -1,8 +1,7 @@
 /* ----------------
-
 ResponsiveTabs.js
-Author: Pete Love
-Version: 1.4
+Author: Pete Love | www.petelove.com
+Version: 1.5
 ------------------- */
 
 var RESPONSIVEUI = {};
@@ -18,6 +17,10 @@ RESPONSIVEUI.responsiveTabs = function () {
 
 			var $tabs = $(this);
 
+			// add tab heading and tab panel classes
+			$tabs.children('h1,h2,h3,h4,h5,h6').addClass('tab-heading');
+			$tabs.children('div').addClass('tab-panel');
+
 			// determine if markup already identifies the active tab panel for this set of tabs
 			// if not then set first heading and tab to be the active one
 			var $activePanel = $tabs.find('.active-panel');
@@ -31,8 +34,8 @@ RESPONSIVEUI.responsiveTabs = function () {
 			$activePanel.addClass('hidden-mobile');
 
 			// wrap tabs in container - to be dynamically resized to help prevent page jump
-	    	var $tabsPanel = $('<div/>', { class: 'tabs-panel' });
-	    	$tabs.wrap($tabsPanel);
+	    	var $tabsWrapper = $('<div/>', { class: 'tabs-wrapper' });
+	    	$tabs.wrap($tabsWrapper);
 
 			var highestHeight = 0;
 
@@ -75,7 +78,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 						//Show associated panel
 
 						//set height of tab container to highest panel height to avoid page jump
-						$tabsPanel.css('height', highestHeight);
+						$tabsWrapper.css('height', highestHeight);
 
 						// remove hidden mobile class from any other panel as we'll want that panel to be open at mobile size
 						$tabs.find('.hidden-mobile').removeClass('hidden-mobile');
@@ -96,7 +99,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 						$tabListItem.addClass('active-tab');
 
 						//reset height of tab panels to auto
-						$tabsPanel.css('height', 'auto');
+						$tabsWrapper.css('height', 'auto');
 					}
 				});
 				
