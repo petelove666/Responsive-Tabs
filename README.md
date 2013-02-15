@@ -15,7 +15,7 @@ Version History
 1.2 Improvements to efficiency and readability of code, especially around element creation and attribute setting  
 1.3 More efficient selectors, some clearer variable naming  
 1.4 Removed necessity for an initially active tab to be set within the markup  
-1.5 Removed need for heading and panel classes to be added manually to markup
+1.5 Removed need for heading and panel classes to be added manually to markup  
 1.6 Converted CSS to use BEM syntax and made minor css improvements
 
 Key features
