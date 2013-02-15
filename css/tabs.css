@@ -18,7 +18,18 @@
 
 
 /* OPTIONAL - Basic Skin */
-
+.responsive-tabs-wrapper { 
+	clear: both;
+	zoom: 1; 
+}
+.responsive-tabs-wrapper:before,
+.responsive-tabs-wrapper:after {
+    content: "";
+    display: table;
+} 
+.responsive-tabs-wrapper:after {
+    clear: both;
+}
 .responsive-tabs__panel { margin-bottom: 50px;}
 .responsive-tabs__heading:focus,
 .responsive-tabs__list__item:focus { outline: 1px solid #ccc;  }
