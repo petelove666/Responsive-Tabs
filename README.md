@@ -16,6 +16,7 @@ Version History
 1.3 More efficient selectors, some clearer variable naming  
 1.4 Removed necessity for an initially active tab to be set within the markup  
 1.5 Removed need for heading and panel classes to be added manually to markup
+1.6 Converted CSS to use BEM syntax and made minor css improvements
 
 Key features
 ============
@@ -45,13 +46,13 @@ How to use
 		</div>
 
 The headings can be any level, from h1 to h6. Note that the first (leftmost) tab panel will be open by default in 'tab view', while all panels will be closed in 'accordion view' (ie. below the specified breakpoint).
-If you want a specific tab other than the first to be open by default then add the additional class 'active-panel' onto the panel, eg:
+If you want a specific tab other than the first to be open by default then add the additional class 'responsive-tabs__panel--active' onto the panel, eg:
 
 		<div class="tabs">
 			<h2>[...]</h2>
 			<div>[...]</div>
 			<h2>[...]</h2>
-			<div class="active-panel">[...]</div>
+			<div class="responsive-tabs__panel--active">[...]</div>
 		</div>
 
-- On document ready, call the function RESPONSIVEUI.responsiveTabs() …your tabs will appear!
+- On document ready, call the function RESPONSIVEUI.responsiveTabs() to create the tabs
