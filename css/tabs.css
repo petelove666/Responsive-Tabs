@@ -1,39 +1,38 @@
 
-/* REQUIRED for core functionality of tab.js */
+/* REQUIRED for core functionality */
 
 @media (max-width: 767px) {
-	.tab-list { display: none;}
-	.tabs.enabled .tab-heading { cursor:pointer; }
-	.tabs.enabled .tab-heading.active-tab-heading { cursor: default; }
-	.hidden-mobile { display: none;}
+	.responsive-tabs__list { display: none;}
+	.responsive-tabs__heading { cursor: pointer; }
+	.responsive-tabs__panel--closed-accordion-only { display: none;}
 }
 
 @media (min-width: 768px) {
-	.tabs.enabled .tab-heading { display: none;}
-	.tab-list li { display: inline; cursor:pointer;}
-	.hidden-mobile { display: block !important;}
+	.responsive-tabs__heading { display: none;}
+	.responsive-tabs__list__item { display: inline; cursor:pointer;}
+	.responsive-tabs__panel--closed-accordion-only { display: block !important;}
 }
 
-/* END - Required for core functionality of tab.js */
+/* END - Required for core functionality */
 
 
 
 /* OPTIONAL - Basic Skin */
 
-.tab-panel { margin-bottom:50px;}
-.tabs.enabled .tab-heading:focus,
-.tabs.enabled .tab-list li:focus { outline: 1px solid #ccc;  }
-.tabs.enabled .tab-heading.active-tab-heading:focus,
-.tabs.enabled .tab-list li.active-tab:focus { outline: none !important;}
+.responsive-tabs__panel { margin-bottom: 50px;}
+.responsive-tabs__heading:focus,
+.responsive-tabs__list__item:focus { outline: 1px solid #ccc;  }
+.responsive-tabs__heading--active:focus,
+.responsive-tabs__list__item--active:focus { outline: none !important;}
 
 @media (max-width: 767px) {
-	.tabs.enabled .tab-heading { 
+	.responsive-tabs__heading { 
 		padding: 0.5em; border-radius: 5px; border: 1px solid #ccc; box-shadow: 0px 2px 3px rgba(0,0,0,0.4);
 		background: #ddd;
 		position: relative;
 	}
 
-	.tabs.enabled .tab-heading:after {
+	.responsive-tabs__heading:after {
 		content:"";
 		display: block;
 		position: absolute;
@@ -45,20 +44,21 @@
 		border-right: 10px solid transparent;
 		border-top: 10px solid #000;
 	}
-	.tabs.enabled .tab-heading:hover,
-	.tabs.enabled .tab-heading.active-tab-heading:hover { background-color: #efefef}
-	.tabs.enabled .tab-heading.active-tab-heading { background: #fff;}
-	.tabs.enabled .tab-heading.active-tab-heading:after {
+	.responsive-tabs__heading:hover,
+	.responsive-tabs__heading--active:hover { background-color: #efefef}
+	.responsive-tabs__heading--active { background: #fff;}
+	.responsive-tabs__heading--active:after {
 		border-bottom: 10px solid #000;
 		border-top:0;
 	 }
 }
 
 @media (min-width: 768px) {
-	.tab-list { font-size: 1.2em; margin: 2em 0 0 0; padding: 0;border-bottom: 1px solid #ddd; padding-bottom:11px; line-height: 1em;}
-	.tab-list li { background: #eee; padding: 10px 20px;  margin-right: 1em; border-top-left-radius: 5px; border-top-right-radius: 5px;border: 1px solid #ddd; }
-	.tab-list li:hover {background: #efefef }
-	.tab-list li.active-tab {  background: #fff; border-bottom-color: #fff;}
+	.responsive-tabs__list { font-size: 1.2em; margin: 2em 0 0 0; padding: 0;border-bottom: 1px solid #ddd; padding-bottom:11px; line-height: 1em;}
+	.responsive-tabs__list__item { background: #eee; padding: 10px 20px;  margin-right: 1em; border-top-left-radius: 5px; border-top-right-radius: 5px;border: 1px solid #ddd; }
+	.responsive-tabs__list__item:hover {background: #efefef }
+	.responsive-tabs__list__item--active, 
+	.responsive-tabs__list__item--active:hover {  background: #fff; border-bottom-color: #fff;}
 }
 
 /* END - Optional - Basic Skin */
