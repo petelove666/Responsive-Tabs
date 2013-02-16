@@ -1,23 +1,25 @@
 
 /* REQUIRED for core functionality */
 
+.responsive-tabs__heading { display: none;}
+.responsive-tabs__list__item { display: inline; cursor:pointer;}
+
+
 @media (max-width: 767px) {
 	.responsive-tabs__list { display: none;}
-	.responsive-tabs__heading { cursor: pointer; }
+	.responsive-tabs__heading { display: block; cursor: pointer; }
 	.responsive-tabs__panel--closed-accordion-only { display: none;}
 }
 
 @media (min-width: 768px) {
-	.responsive-tabs__heading { display: none;}
-	.responsive-tabs__list__item { display: inline; cursor:pointer;}
 	.responsive-tabs__panel--closed-accordion-only { display: block !important;}
 }
 
 /* END - Required for core functionality */
 
 
-
 /* OPTIONAL - Basic Skin */
+
 .responsive-tabs-wrapper { 
 	clear: both;
 	zoom: 1; 
@@ -30,11 +32,20 @@
 .responsive-tabs-wrapper:after {
     clear: both;
 }
-.responsive-tabs__panel { margin-bottom: 50px;}
+
 .responsive-tabs__heading:focus,
 .responsive-tabs__list__item:focus { outline: 1px solid #ccc;  }
+
 .responsive-tabs__heading--active:focus,
 .responsive-tabs__list__item--active:focus { outline: none !important;}
+
+.responsive-tabs__list { font-size: 1.2em; margin: 2em 0 0 0; padding: 0;border-bottom: 1px solid #ddd; padding-bottom:11px; line-height: 1em;}
+.responsive-tabs__list__item { background: #eee; padding: 10px 20px;  margin-right: 1em; border-top-left-radius: 5px; border-top-right-radius: 5px;border: 1px solid #ddd; }
+.responsive-tabs__list__item:hover {background: #efefef }
+.responsive-tabs__list__item--active, 
+.responsive-tabs__list__item--active:hover {  background: #fff; border-bottom-color: #fff;}
+
+.responsive-tabs__panel { margin-bottom: 50px;}
 
 @media (max-width: 767px) {
 	.responsive-tabs__heading { 
@@ -49,8 +60,8 @@
 		position: absolute;
 		right: 20px;
 		top: 40%;
-		width: 0px; 
-		height: 0px; 
+		width: 0; 
+		height: 0; 
 		border-left: 10px solid transparent;
 		border-right: 10px solid transparent;
 		border-top: 10px solid #000;
@@ -62,14 +73,6 @@
 		border-bottom: 10px solid #000;
 		border-top:0;
 	 }
-}
-
-@media (min-width: 768px) {
-	.responsive-tabs__list { font-size: 1.2em; margin: 2em 0 0 0; padding: 0;border-bottom: 1px solid #ddd; padding-bottom:11px; line-height: 1em;}
-	.responsive-tabs__list__item { background: #eee; padding: 10px 20px;  margin-right: 1em; border-top-left-radius: 5px; border-top-right-radius: 5px;border: 1px solid #ddd; }
-	.responsive-tabs__list__item:hover {background: #efefef }
-	.responsive-tabs__list__item--active, 
-	.responsive-tabs__list__item--active:hover {  background: #fff; border-bottom-color: #fff;}
 }
 
 /* END - Optional - Basic Skin */

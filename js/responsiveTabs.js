@@ -36,7 +36,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 			$activePanel.addClass('responsive-tabs__panel--closed-accordion-only');
 
 			// wrap tabs in container - to be dynamically resized to help prevent page jump
-	    	var $tabsWrapper = $('<div/>', { class: 'responsive-tabs-wrapper' });
+	    	var $tabsWrapper = $('<div/>', {Class: 'responsive-tabs-wrapper' });
 	    	$tabs.wrap($tabsWrapper);
 
 			var highestHeight = 0;
@@ -50,7 +50,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 			})
 
 			//create the tab list
-			var $tabList = $('<ul/>', { class: 'responsive-tabs__list', 'role': 'tablist' });
+			var $tabList = $('<ul/>', { Class: 'responsive-tabs__list', 'role': 'tablist' });
 
 			//loop through each heading in set
 			var tabcount = 1;
@@ -65,7 +65,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 				//create tab list item from heading
 				//associate tab list item with tab panel
 				var $tabListItem = $('<li/>', { 
-					class: 'responsive-tabs__list__item',
+					Class: 'responsive-tabs__list__item',
 					id: 'tablist' + tablistcount + '-tab' + tabcount,
 					'aria-controls': 'tablist' + tablistcount +'-panel' + tabcount,
 					'role': 'tab',
