@@ -16,7 +16,8 @@ Version History
 1.3 More efficient selectors, some clearer variable naming  
 1.4 Removed necessity for an initially active tab to be set within the markup  
 1.5 Removed need for heading and panel classes to be added manually to markup  
-1.6 Converted CSS to use BEM syntax and made minor css improvements
+1.6 Converted CSS to use BEM syntax and made minor css improvements  
+1.7 Moved some CSS out of media queries and fixed JS issue to give (non-responsive) support for IE7 and IE8
 
 Key features
 ============
@@ -29,7 +30,8 @@ Notes
 =====
 - When tabs are generated, the tab that is open initially is set by the author in the markup (future versions are planned to default to the first tab if none is sepcified).  
 - In the accordion view all headings are collapsed initially. If window is resized to tab view when all accordions are collapsed then the open tab will be the last tab that was opened in tab view (or the default one if none have been opened by user)
-- In accordion view if the user opens an accordion below the currently open one, then the screen will scroll down to that accordion, to prevent disorientating page jump
+- In accordion view if the user opens an accordion below the currently open one, then the screen will scroll down to that accordion, to prevent disorientating page jump  
+- In Internet Explorer 7 and 8 the tabs are not responsive but appear as regular tabs irrespective of screen size
 
 How to use
 ==========
