@@ -1,7 +1,7 @@
 /* ----------------
 ResponsiveTabs.js
 Author: Pete Love | www.petelove.com
-Version: 1.7
+Version: 1.8
 ------------------- */
 
 var RESPONSIVEUI = {};
