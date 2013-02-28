@@ -27,7 +27,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 			// if not then set first heading and tab to be the active one
 			var $activePanel = $tabs.find('.responsive-tabs__panel--active');
 			if(!$activePanel.length) {
-				var $activePanel = $tabs.find('.responsive-tabs__panel').first().addClass('responsive-tabs__panel--active');
+				$activePanel = $tabs.find('.responsive-tabs__panel').first().addClass('responsive-tabs__panel--active');
 			}
 
 			$tabs.find('.responsive-tabs__panel').not('.responsive-tabs__panel--active').hide().attr('aria-hidden','true'); //hide all except active panel
@@ -36,8 +36,8 @@ RESPONSIVEUI.responsiveTabs = function () {
 			$activePanel.addClass('responsive-tabs__panel--closed-accordion-only');
 
 			// wrap tabs in container - to be dynamically resized to help prevent page jump
-	    	var $tabsWrapper = $('<div/>', {Class: 'responsive-tabs-wrapper' });
-	    	$tabs.wrap($tabsWrapper);
+			var $tabsWrapper = $('<div/>', {'class': 'responsive-tabs-wrapper' });
+			$tabs.wrap($tabsWrapper);
 
 			var highestHeight = 0;
 
@@ -47,10 +47,10 @@ RESPONSIVEUI.responsiveTabs = function () {
 				if (tabHeight > highestHeight) {
 					highestHeight = tabHeight;
 				}
-			})
+			});
 
 			//create the tab list
-			var $tabList = $('<ul/>', { Class: 'responsive-tabs__list', 'role': 'tablist' });
+			var $tabList = $('<ul/>', { 'class': 'responsive-tabs__list', 'role': 'tablist' });
 
 			//loop through each heading in set
 			var tabcount = 1;
@@ -65,17 +65,17 @@ RESPONSIVEUI.responsiveTabs = function () {
 				//create tab list item from heading
 				//associate tab list item with tab panel
 				var $tabListItem = $('<li/>', { 
-					Class: 'responsive-tabs__list__item',
+					'class': 'responsive-tabs__list__item',
 					id: 'tablist' + tablistcount + '-tab' + tabcount,
 					'aria-controls': 'tablist' + tablistcount +'-panel' + tabcount,
 					'role': 'tab',
 					tabindex: 0,
 					text: $tabHeading.text(),
 					keydown: function (objEvent) {
-		            	if (objEvent.keyCode == 13) { // if user presses 'enter'
-		                	$tabListItem.click();
-		            	}
-		        	},
+						if (objEvent.keyCode == 13) { // if user presses 'enter'
+							$tabListItem.click();
+						}
+					},
 					click: function() {
 						//Show associated panel
 
@@ -107,12 +107,12 @@ RESPONSIVEUI.responsiveTabs = function () {
 				
 				//associate tab panel with tab list item
 				$tabPanel.attr({
-	 				'role': 'tabpanel',
-	 				'aria-labelledby': $tabListItem.attr('id'),
-	 				id: 'tablist' + tablistcount + '-panel' + tabcount
-	 			});
+					'role': 'tabpanel',
+					'aria-labelledby': $tabListItem.attr('id'),
+					id: 'tablist' + tablistcount + '-panel' + tabcount
+				});
 
-	 			// if this is the active panel then make it the active tab item
+				// if this is the active panel then make it the active tab item
 				if($tabPanel.hasClass('responsive-tabs__panel--active')) {
 					$tabListItem.addClass('responsive-tabs__list__item--active');
 				}
@@ -124,10 +124,10 @@ RESPONSIVEUI.responsiveTabs = function () {
 				// TAB HEADINGS (VISIBLE ON MOBILE)
 				// if user presses 'enter' on tab heading trigger the click event
 				$tabHeading.keydown(function(objEvent) {
-		            if (objEvent.keyCode == 13) {
-		                 $tabHeading.click();
-		            }
-		        })
+					if (objEvent.keyCode == 13) {
+						$tabHeading.click();
+					}
+				});
 
 				//toggle tab panel if click heading (on mobile)
 				$tabHeading.click(function() {
@@ -137,9 +137,11 @@ RESPONSIVEUI.responsiveTabs = function () {
 
 					// if this isn't currently active
 					if (!$tabHeading.hasClass('responsive-tabs__heading--active')){
-						//get position of active heading 
+
+						var oldActivePos;
+						// if there is an active heading, get its position
 						if($('.responsive-tabs__heading--active').length) {
-							var oldActivePos = $('.responsive-tabs__heading--active').offset().top;
+							oldActivePos = $('.responsive-tabs__heading--active').offset().top;
 						}
 						
 						// close currently active panel and remove active state from any hidden heading
@@ -164,7 +166,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 
 						//scroll to active heading only if it is below previous one
 						var tabsPos = $('.responsive-tabs').offset().top;
-						var newActivePos = $('.responsive-tabs__heading--active').offset().top;
+						var newActivePos = ($('.responsive-tabs__heading--active').offset().top) - 15;
 						if(oldActivePos < newActivePos) {
 							$('html, body').animate({ scrollTop: tabsPos }, 0).animate({ scrollTop: newActivePos }, 400);
 						}
@@ -175,7 +177,7 @@ RESPONSIVEUI.responsiveTabs = function () {
 					else {
 
 						// hide panel but give it special responsive-tabs__panel--closed-accordion-only class so that it can be visible at desktop size
-						$tabPanel.removeClass('responsive-tabs__panel--active').slideToggle(function () { $(this).addClass('responsive-tabs__panel--closed-accordion-only') });
+						$tabPanel.removeClass('responsive-tabs__panel--active').slideToggle(function () { $(this).addClass('responsive-tabs__panel--closed-accordion-only'); });
 
 						//remove active heading class
 						$tabHeading.removeClass('responsive-tabs__heading--active');
@@ -183,17 +185,17 @@ RESPONSIVEUI.responsiveTabs = function () {
 						//don't alter classes on tabs as we want it active if put back to desktop size
 					}
 					
-				})
+				});
 
 				tabcount ++;
 
-			})
+			});
 
 			// add finished tab list to its container
 			$tabs.prepend($tabList);
 
 			// next set of tabs on page
 			tablistcount ++;
-		})
+		});
 	}
-}
+};
