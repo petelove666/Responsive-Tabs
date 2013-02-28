@@ -17,7 +17,8 @@ Version History
 1.4 Removed necessity for an initially active tab to be set within the markup  
 1.5 Removed need for heading and panel classes to be added manually to markup  
 1.6 Converted CSS to use BEM syntax and made minor css improvements  
-1.7 Moved some CSS out of media queries and fixed JS issue to give (non-responsive) support for IE7 and IE8
+1.7 Moved some CSS out of media queries and fixed JS issue to give (non-responsive) support for IE7 and IE8  
+1.8 Fixed some issues flagged by JSHint and tweaked accordion interaction
 
 Key features
 ============
