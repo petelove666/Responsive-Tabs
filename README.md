@@ -18,7 +18,8 @@ Version History
 1.5 Removed need for heading and panel classes to be added manually to markup  
 1.6 Converted CSS to use BEM syntax and made minor css improvements  
 1.7 Moved some CSS out of media queries and fixed JS issue to give (non-responsive) support for IE7 and IE8  
-1.8 Fixed some issues flagged by JSHint and tweaked accordion interaction
+1.8 Fixed some issues flagged by JSHint and tweaked accordion interaction  
+1.9 Made it a self executing function and made css filename more explicit
 
 Key features
 ============
@@ -37,7 +38,7 @@ How to use
 ==========
 - Include jQuery (requires minimum jquery-1.5.1.min.js)
 - Include responsiveTabs.js
-- Include the css from tabs.css, and adjust the media query breakpoint as desired
+- Include the css from responsive-tabs.css, and adjust the media query breakpoint as desired
 - Markup your tabs regions as follows:
 
 		<div class="tabs">
