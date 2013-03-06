@@ -41,7 +41,7 @@ How to use
 - Include the css from responsive-tabs.css, and adjust the media query breakpoint as desired
 - Markup your tabs regions as follows:
 
-		<div class="tabs">
+		<div class="responsive-tabs">
 			<h2>[...]</h2>
 			<div>[...]</div>
 			<h2>[...]</h2>
@@ -51,7 +51,7 @@ How to use
 The headings can be any level, from h1 to h6. Note that the first (leftmost) tab panel will be open by default in 'tab view', while all panels will be closed in 'accordion view' (ie. below the specified breakpoint).
 If you want a specific tab other than the first to be open by default then add the additional class 'responsive-tabs__panel--active' onto the panel, eg:
 
-		<div class="tabs">
+		<div class="responsive-tabs">
 			<h2>[...]</h2>
 			<div>[...]</div>
 			<h2>[...]</h2>
