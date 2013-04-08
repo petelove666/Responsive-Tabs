@@ -1,7 +1,7 @@
 /* ----------------
 ResponsiveTabs.js
 Author: Pete Love | www.petelove.com
-Version: 1.9
+Version: 1.10
 ------------------- */
 
 var RESPONSIVEUI = {};
@@ -22,7 +22,7 @@ var RESPONSIVEUI = {};
 				var $tabs = $(this);
 
 				// add tab heading and tab panel classes
-				$tabs.children('h1,h2,h3,h4,h5,h6').addClass('responsive-tabs__heading');
+				$tabs.children(':header').addClass('responsive-tabs__heading');
 				$tabs.children('div').addClass('responsive-tabs__panel');
 
 				// determine if markup already identifies the active tab panel for this set of tabs
@@ -140,10 +140,12 @@ var RESPONSIVEUI = {};
 						// if this isn't currently active
 						if (!$tabHeading.hasClass('responsive-tabs__heading--active')){
 
-							var oldActivePos;
+							var oldActivePos,
+								$activeHeading = $tabs.find('.responsive-tabs__heading--active');
+								
 							// if there is an active heading, get its position
-							if($('.responsive-tabs__heading--active').length) {
-								oldActivePos = $('.responsive-tabs__heading--active').offset().top;
+							if($activeHeading.length) {
+								oldActivePos = $activeHeading.offset().top;
 							}
 							
 							// close currently active panel and remove active state from any hidden heading
@@ -167,8 +169,8 @@ var RESPONSIVEUI = {};
 							$('#' + tabId).addClass('responsive-tabs__list__item--active');
 
 							//scroll to active heading only if it is below previous one
-							var tabsPos = $('.responsive-tabs').offset().top;
-							var newActivePos = ($('.responsive-tabs__heading--active').offset().top) - 15;
+							var tabsPos = $tabs.offset().top;
+							var newActivePos = ($tabHeading.offset().top) - 15;
 							if(oldActivePos < newActivePos) {
 								$('html, body').animate({ scrollTop: tabsPos }, 0).animate({ scrollTop: newActivePos }, 400);
 							}
