@@ -19,7 +19,8 @@ Version History
 1.6 Converted CSS to use BEM syntax and made minor css improvements  
 1.7 Moved some CSS out of media queries and fixed JS issue to give (non-responsive) support for IE7 and IE8  
 1.8 Fixed some issues flagged by JSHint and tweaked accordion interaction  
-1.9 Made it a self executing function and made css filename more explicit
+1.9 Made it a self executing function and made css filename more explicit  
+1.10 Fixed potential scrolling issue in accordion view when more than one set of tabs on page, and other efficiency tweaks
 
 Key features
 ============
