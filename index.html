@@ -117,7 +117,17 @@
 		<script src="js/responsiveTabs.js"></script>
 		<script>
 		$(document).ready(function() {
-			RESPONSIVEUI.responsiveTabs();
+			RESPONSIVEUI.responsiveTabs({
+				targetClass: 'responsive-tabs', // Base class to look for, also determines all element & state classes (__heading, etc)
+				defaultSpeed: 0, // Default speed of the tab toggle. Set to 0 for instant switch
+				responsiveSpeed: 150, // Default speed of the responsive accordion slideToggle. Set to 0 for instant switch
+				onTabShow: function(){ // Callback function when a tab is shown
+					console.log("Tab Shown "+$(this).attr("class")); 
+				}, 
+				onTabHide: function(){ // Callback function when a tab is hidden
+					console.log("Tab Hidden "+$(this).attr("class"));
+				}
+			});
 		})
 		</script>
 	</body>
