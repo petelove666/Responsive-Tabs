@@ -1,19 +1,29 @@
 
 /* REQUIRED for core functionality */
 
-.responsive-tabs__heading { display: none;}
-.responsive-tabs__list__item { display: inline; cursor:pointer;}
+.responsive-tabs__heading { display: none; }
+.responsive-tabs__list__item { display: inline; cursor:pointer; }
 
 
 @media (max-width: 767px) {
-	.responsive-tabs__list { display: none;}
-	.responsive-tabs__heading { display: block; cursor: pointer; }
-	.responsive-tabs__panel--closed-accordion-only { display: none;}
+	.responsive-tabs--responsive-view .responsive-tabs__list { display: none; }
+	.responsive-tabs--responsive-view .responsive-tabs__heading { display: block; cursor: pointer; }
+	.responsive-tabs--responsive-view .responsive-tabs__panel--closed-accordion-only { display: none; }
 }
 
 @media (min-width: 768px) {
-	.responsive-tabs__panel--closed-accordion-only { display: block !important;}
+	.responsive-tabs--responsive-view .responsive-tabs__panel--closed-accordion-only { display: block !important; }
 }
+
+/* Force Accordion View */
+.responsive-tabs--accordion-view .responsive-tabs__list { display: none; }
+.responsive-tabs--accordion-view .responsive-tabs__heading { display: block; cursor: pointer; }
+.responsive-tabs--accordion-view .responsive-tabs__panel--closed-accordion-only { display: none; }
+
+/* Force Tab View */
+.responsive-tabs--tab-view	.responsive-tabs__panel--closed-accordion-only { display: block !important; }
+.responsive-tabs--tab-view .responsive-tabs__heading { display: none; }
+.responsive-tabs--tab-view .responsive-tabs__list__item { display: inline; cursor:pointer; }
 
 /* END - Required for core functionality */
 
@@ -48,13 +58,13 @@
 .responsive-tabs__panel { margin-bottom: 50px;}
 
 @media (max-width: 767px) {
-	.responsive-tabs__heading { 
+	.responsive-tabs--responsive-view .responsive-tabs__heading { 
 		padding: 0.5em; border-radius: 5px; border: 1px solid #ccc; box-shadow: 0px 2px 3px rgba(0,0,0,0.4);
 		background: #ddd;
 		position: relative;
 	}
 
-	.responsive-tabs__heading:after {
+	.responsive-tabs--responsive-view .responsive-tabs__heading:after {
 		content:"";
 		display: block;
 		position: absolute;
@@ -66,13 +76,39 @@
 		border-right: 10px solid transparent;
 		border-top: 10px solid #000;
 	}
-	.responsive-tabs__heading:hover,
-	.responsive-tabs__heading--active:hover { background-color: #efefef}
-	.responsive-tabs__heading--active { background: #fff;}
-	.responsive-tabs__heading--active:after {
+	.responsive-tabs--responsive-view .responsive-tabs__heading:hover,
+	.responsive-tabs--responsive-view .responsive-tabs__heading--active:hover { background-color: #efefef}
+	.responsive-tabs--responsive-view .responsive-tabs__heading--active { background: #fff;}
+	.responsive-tabs--responsive-view .responsive-tabs__heading--active:after {
 		border-bottom: 10px solid #000;
 		border-top:0;
-	 }
+	}
+}
+
+.responsive-tabs--accordion-view .responsive-tabs__heading { 
+	padding: 0.5em; border-radius: 5px; border: 1px solid #ccc; box-shadow: 0px 2px 3px rgba(0,0,0,0.4);
+	background: #ddd;
+	position: relative;
+}
+
+.responsive-tabs--accordion-view .responsive-tabs__heading:after {
+	content:"";
+	display: block;
+	position: absolute;
+	right: 20px;
+	top: 40%;
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #000;
+}
+.responsive-tabs--accordion-view .responsive-tabs__heading:hover,
+.responsive-tabs--accordion-view .responsive-tabs__heading--active:hover { background-color: #efefef}
+.responsive-tabs--accordion-view .responsive-tabs__heading--active { background: #fff;}
+.responsive-tabs--accordion-view .responsive-tabs__heading--active:after {
+		border-bottom: 10px solid #000;
+		border-top:0;
 }
 
 /* END - Optional - Basic Skin */
