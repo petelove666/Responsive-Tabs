@@ -1,14 +1,18 @@
 /* ----------------
 ResponsiveTabs.js
-Author: Pete Love | www.petelove.com
-Version: 1.13
+Author: Shaw | https://github.com/shshaw/
+Original Author: Pete Love | www.petelove.com
+Version: 1.14
+Source: https://github.com/shshaw/Responsive-Tabs
 ------------------- */
 
 (function($) {
 	$.fn.responsiveTabs = function (options) {
 	
 		var defaults = {
-			targetClass: 'responsive-tabs', // Base class to look for, also determines all element & state classes (__heading, etc)
+			targetClass: 'responsive-tabs', // Determines all element & state classes (__heading, etc)
+			headings: ':header', // jQuery selector for headings
+			panels: 'div', // jQuery selector for panels
 			defaultSpeed: 0, // Default speed of the tab toggle. Set to 0 for instant switch
 			responsiveSpeed: 150, // Default speed of the responsive accordion slideToggle. Set to 0 for instant switch
 			scrollOffset: 0, // Specify an offset from the top when scrolling to active tab
@@ -27,15 +31,15 @@ Version: 1.13
 			if (!$tabSet.hasClass(settings.targetClass+'--enabled')) {	// if we haven't already called this function and enabled tabs
 				$tabSet.addClass(settings.targetClass+'--enabled');
 	
-				var $tabs = $(this);
+				var $tabs = $(this),
+					// add tab heading and tab panel classes
+					$tabHeadings = $tabs.children(settings.headings).addClass(settings.targetClass+'__heading'),
+					$tabPanels = $tabs.children(settings.panels).addClass(settings.targetClass+'__panel'),
 
-				// add tab heading and tab panel classes
-				$tabs.children(':header').addClass(settings.targetClass+'__heading');
-				$tabs.children('div').addClass(settings.targetClass+'__panel');
-
-				// determine if markup already identifies the active tab panel for this set of tabs
-				// if not then set first heading and tab to be the active one
-				var $activePanel = $tabs.find('.'+settings.targetClass+'__panel--active');
+					// determine if markup already identifies the active tab panel for this set of tabs
+					// if not then set first heading and tab to be the active one
+					$activePanel = $tabs.find('.'+settings.targetClass+'__panel--active');
+					
 				if(!$activePanel.length) {
 					$activePanel = $tabs.find('.'+settings.targetClass+'__panel').first().addClass(settings.targetClass+'__panel--active');
 				}
@@ -64,7 +68,7 @@ Version: 1.13
 
 				//loop through each heading in set
 				var tabcount = 1;
-				$tabs.find('.'+settings.targetClass+'__heading').each(function() {
+				$tabHeadings.each(function() {
 
 					var $tabHeading = $(this);
 					var $tabPanel = $(this).next();

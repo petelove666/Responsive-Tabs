@@ -20,6 +20,7 @@ Version History
 - 1.11 Added options & callbacks (@shshaw)
 - 1.12 Added Scroll Offset option (@shshaw)
 - 1.13 Made plugin jQuery chain-able (@shshaw)
+- 1.14 Heading & Panel selectors (@shshaw)
 
 Key features
 ============
@@ -66,7 +67,9 @@ How to use
 
 		$(document).ready(function() {
 			$('.responsive-tabs').responsiveTabs({
-				targetClass: 'responsive-tabs', // Base class to look for, also determines all element & state classes (__heading, etc). Keep this as 'responsive-tabs' if you use the included CSS.
+				targetClass: 'responsive-tabs', // Determines all element & state classes (__heading, etc)
+				headings: ':header', // jQuery selector for headings
+				panels: 'div', // jQuery selector for panels
 				defaultSpeed: 0, // Default speed of the tab toggle. Set to 0 for instant switch
 				responsiveSpeed: 150, // Default speed of the responsive accordion slideToggle. Set to 0 for instant switch
 				scrollOffset: 0, // Specify an offset from the top when scrolling to active tab to compensate for fixed headers and other design elements
