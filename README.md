@@ -17,10 +17,11 @@ Version History
 - 1.8 Fixed some issues flagged by JSHint and tweaked accordion interaction  
 - 1.9 Made it a self executing function and made css filename more explicit  
 - 1.10 Fixed potential scrolling issue in accordion view when more than one set of tabs on page, and other efficiency tweaks
-- 1.11 Added options & callbacks (@shshaw)
-- 1.12 Added Scroll Offset option (@shshaw)
+- 1.11 Options & callbacks (@shshaw)
+- 1.12 `scrollOffset` option (@shshaw)
 - 1.13 Made plugin jQuery chain-able (@shshaw)
-- 1.14 Heading & Panel selectors (@shshaw)
+- 1.14 Options for Headings & Panels selectors (@shshaw)
+- 1.15 `view` option to make a tab set only display a specific view (@shshaw)
 
 Key features
 ============
@@ -70,6 +71,7 @@ How to use
 				targetClass: 'responsive-tabs', // Determines all element & state classes (__heading, etc)
 				headings: ':header', // jQuery selector for headings
 				panels: 'div', // jQuery selector for panels
+				view: 'responsive', // Set to 'accordion' or 'tab' to force a specific view or set to 'responsive' for default functionality.
 				defaultSpeed: 0, // Default speed of the tab toggle. Set to 0 for instant switch
 				responsiveSpeed: 150, // Default speed of the responsive accordion slideToggle. Set to 0 for instant switch
 				scrollOffset: 0, // Specify an offset from the top when scrolling to active tab to compensate for fixed headers and other design elements

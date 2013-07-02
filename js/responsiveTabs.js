@@ -2,7 +2,7 @@
 ResponsiveTabs.js
 Author: Shaw | https://github.com/shshaw/
 Original Author: Pete Love | www.petelove.com
-Version: 1.14
+Version: 1.15
 Source: https://github.com/shshaw/Responsive-Tabs
 ------------------- */
 
@@ -11,8 +11,9 @@ Source: https://github.com/shshaw/Responsive-Tabs
 	
 		var defaults = {
 			targetClass: 'responsive-tabs', // Determines all element & state classes (__heading, etc)
-			headings: ':header', // jQuery selector for headings
-			panels: 'div', // jQuery selector for panels
+			headings: ':header', // Filter for headings
+			panels: 'div', // Filter for panels
+			view: 'responsive', // Set to 'accordion' or 'tab' to force a specific view or set to 'responsive' for default functionality.
 			defaultSpeed: 0, // Default speed of the tab toggle. Set to 0 for instant switch
 			responsiveSpeed: 150, // Default speed of the responsive accordion slideToggle. Set to 0 for instant switch
 			scrollOffset: 0, // Specify an offset from the top when scrolling to active tab
@@ -27,6 +28,8 @@ Source: https://github.com/shshaw/Responsive-Tabs
 		return this.each( function() {
 		
 			var $tabSet = $(this);
+			
+			$tabSet.addClass(settings.targetClass+'--'+settings.view+'-view');
 	
 			if (!$tabSet.hasClass(settings.targetClass+'--enabled')) {	// if we haven't already called this function and enabled tabs
 				$tabSet.addClass(settings.targetClass+'--enabled');
