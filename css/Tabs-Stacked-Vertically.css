@@ -1,0 +1,49 @@
+/*Start - Tabs Stacked Vertically Beside the Content
+----------------------------------------------------------------*/
+
+.vertical-tabs .responsive-tabs__list {
+    float: left;
+    width:14%;
+    border-bottom: none;
+    border-right: 1px solid #ddd;
+    padding-bottom: 0;
+    margin: 0;
+
+}
+.vertical-tabs .responsive-tabs__list__item {
+    display: block;
+    position: relative;
+    left: 1px;
+    padding: 15px 15px !important;
+    margin: 0.85em 0 1em 0;
+    float: none;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0;
+}
+.vertical-tabs .responsive-tabs__list__item--active {
+    position: relative;
+    z-index: 1;
+    border-bottom-color: #ddd;
+    border-right-color: #fff;
+}
+.vertical-tabs .responsive-tabs__panel {
+    background-color: #fff;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-radius: 0;	
+    float: left;
+    width: 83%;
+    min-height: 250px;
+    margin-left: -1px;
+    padding-left: 25px;
+}
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+    .vertical-tabs .responsive-tabs__list {
+	width: 18%;
+    }
+    .vertical-tabs .responsive-tabs__panel {
+	width: 78%;
+    }
+}
+/*End - Tabs Stacked Vertically Beside the Content
+----------------------------------------------------------------*/
