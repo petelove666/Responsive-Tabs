@@ -37,6 +37,14 @@
     margin-left: -1px;
     padding-left: 25px;
 }
+@media (max-width: 767px) {
+	.vertical-tabs .responsive-tabs__panel {
+		float: none;
+		border: none;
+		min-height: none;
+		margin-left: 0;
+	}
+}
 @media only screen and (min-width: 768px) and (max-width: 979px) {
     .vertical-tabs .responsive-tabs__list {
 	width: 18%;
