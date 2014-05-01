@@ -174,7 +174,7 @@ var RESPONSIVEUI = {};
 
 							//scroll to active heading only if it is below previous one
 							var tabsPos = $tabs.offset().top;
-							var newActivePos = ($tabHeading.offset().top) - 5;
+							var newActivePos = ($tabHeading.offset().top) - 15;
 							if(oldActivePos < newActivePos) {
 								$('html, body').animate({ scrollTop: tabsPos }, 0).animate({ scrollTop: newActivePos }, 550);
 							}
