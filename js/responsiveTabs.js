@@ -32,12 +32,12 @@ var RESPONSIVEUI = {};
 					$activePanel = $tabs.find('.responsive-tabs__panel').first().addClass('responsive-tabs__panel--active');
 				}
 
-                /* Add active class to the active header of the panel (FOR MOBILE) */                
-                $activeHeader = $activePanel.prev();
-                if($activeHeader !== null) {
-                    $activeHeader.addClass("responsive-tabs__heading--active");
-                }
-                
+				/* Add active class to the active header of the panel (FOR MOBILE) */                
+				$activeHeader = $activePanel.prev();
+				if($activeHeader !== null) {
+					$activeHeader.addClass("responsive-tabs__heading--active");
+				}
+
 				$tabs.find('.responsive-tabs__panel').not('.responsive-tabs__panel--active').hide().attr('aria-hidden','true'); //hide all except active panel
 				$activePanel.attr('aria-hidden', 'false');
 
