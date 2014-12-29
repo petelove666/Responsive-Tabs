@@ -6,7 +6,7 @@ For creating responsive tabs. The controls behave like regular tabs above a spec
 
 Demo
 ====
-http://www.petelove.co.uk/responsiveTabs/  
+http://www.petelove.com/responsiveTabs/  
 
 Version History
 ===============
