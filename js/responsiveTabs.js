@@ -68,11 +68,11 @@ var RESPONSIVEUI = {};
 					//associate tab list item with tab panel
 					var $tabListItem = $('<li/>', { 
 						'class': 'responsive-tabs__list__item',
+						html: $tabHeading.html(),
 						id: 'tablist' + tablistcount + '-tab' + tabcount,
 						'aria-controls': 'tablist' + tablistcount +'-panel' + tabcount,
 						'role': 'tab',
 						tabindex: 0,
-						text: $tabHeading.text(),
 						keydown: function (objEvent) {
 							if (objEvent.keyCode === 13) { // if user presses 'enter'
 								$tabListItem.click();
