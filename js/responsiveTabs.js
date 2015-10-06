@@ -32,10 +32,14 @@ var RESPONSIVEUI = {};
 					$activePanel = $tabs.find('.responsive-tabs__panel').first().addClass('responsive-tabs__panel--active');
 				}
 
+				/* Add active class to the active header of the panel (FOR MOBILE) */                
+				$activeHeader = $activePanel.prev();
+				if($activeHeader !== null) {
+					$activeHeader.addClass("responsive-tabs__heading--active");
+				}
+
 				$tabs.find('.responsive-tabs__panel').not('.responsive-tabs__panel--active').hide().attr('aria-hidden','true'); //hide all except active panel
 				$activePanel.attr('aria-hidden', 'false');
-				/* make active tab panel hidden for mobile */
-				$activePanel.addClass('responsive-tabs__panel--closed-accordion-only');
 
 				// wrap tabs in container - to be dynamically resized to help prevent page jump
 				var $tabsWrapper = $('<div/>', {'class': 'responsive-tabs-wrapper' });
@@ -172,7 +176,7 @@ var RESPONSIVEUI = {};
 							var tabsPos = $tabs.offset().top;
 							var newActivePos = ($tabHeading.offset().top) - 15;
 							if(oldActivePos < newActivePos) {
-								$('html, body').animate({ scrollTop: tabsPos }, 0).animate({ scrollTop: newActivePos }, 400);
+								$('html, body').animate({ scrollTop: tabsPos }, 0).animate({ scrollTop: newActivePos }, 550);
 							}
 							
 						}
